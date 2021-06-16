@@ -16,29 +16,29 @@ Solarized Simple is a drop-in replacement for Solarized. It reduces the numbers
 of colours used and attempts to improve consistency between languages.
 
 Current list of tweaked languages/tools (`*` indicates additional syntax rules
-added):
+added, `^` indicates possibly buggy, complicated rules):
 
-- C++
 - C#
-- Python\*
-- Rust
-- vimscript
+- C/C++
+- CMake
 - HTML/XML
 - JSON
-- YAML
-- TOML
-- CMake
-- dosini
-- netrw
-- PHP
-- JavaScript\*
+- Java
+- JavaScript\*/TypeScript\*^
+- Lua
 - Markdown
+- PHP
+- Python\*
+- Rust
+- TOML
+- YAML
 - dosbatch\*
+- dosini
 - go
+- netrw
+- vimscript
 
-Next:
-
-- dart
+Please raise a filetype if you are interested in seeing it tweaked.
 
 Visit the [Solarized homepage]
 ------------------------------
