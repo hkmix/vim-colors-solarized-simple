@@ -1046,8 +1046,8 @@ hi! link cmakeKWwrite_file Normal
 hi! link pythonExceptions Normal
 hi! link pythonDecoratorName pythonDecorator
 hi! link pythonBuiltin Normal
-hi! link pythonNone Type
-hi! link pythonBoolean Type
+hi! link pythonNone Constant
+hi! link pythonBoolean Constant
 hi! link pythonDoctest PreProc
 hi! link pythonDoctestValue PreProc
 "}}}
