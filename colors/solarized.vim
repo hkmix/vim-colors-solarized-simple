@@ -939,6 +939,7 @@ exe "hi! netrwSymlink" .s:fmt_none   .s:fg_cyan   .s:bg_none
 " fugitive highlighting "{{{
 " ---------------------------------------------------------------------
 hi! link fugitiveSymbolicRef Highlighted
+hi! link fugitiveHash Highlighted
 "}}}
 " json highlighting "{{{
 " ---------------------------------------------------------------------

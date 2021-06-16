@@ -18,27 +18,27 @@ of colours used and attempts to improve consistency between languages.
 Current list of tweaked languages/tools (`*` indicates additional syntax rules
 added):
 
-    - C++
-    - C#
-    - Python*
-    - Rust
-    - vimscript
-    - HTML/XML
-    - JSON
-    - YAML
-    - TOML
-    - CMake
-    - dosini
-    - netrw
-    - PHP
-    - JavaScript*
+- C++
+- C#
+- Python*
+- Rust
+- vimscript
+- HTML/XML
+- JSON
+- YAML
+- TOML
+- CMake
+- dosini
+- netrw
+- PHP
+- JavaScript*
 
 Next:
 
-    - Markdown
-    - dosbatch
-    - go
-    - dart
+- Markdown
+- dosbatch
+- go
+- dart
 
 Visit the [Solarized homepage]
 ------------------------------
