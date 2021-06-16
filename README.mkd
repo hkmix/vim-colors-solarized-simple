@@ -8,10 +8,25 @@ Modified: 2011 Apr 16
 
 ---
 
-Solarized Colorscheme for Vim
-=============================
+Solarized Simple Colorscheme for Vim
+====================================
 
 Developed by Ethan Schoonover <es@ethanschoonover.com>
+
+Solarized Simple is a drop-in replacement for Solarized. It reduces the numbers
+of colours used and attempts to improve consistency between languages.
+
+Current list of tweaked languages/tools:
+    - C++
+    - Python
+    - Rust
+    - HTML/XML
+    - JSON
+    - YAML
+    - TOML
+    - CMake
+    - netrw
+
 
 Visit the [Solarized homepage]
 ------------------------------
