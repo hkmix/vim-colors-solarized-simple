@@ -1,10 +1,11 @@
 " Name:     Solarized vim colorscheme
 " Author:   Ethan Schoonover <es@ethanschoonover.com>
+"           Modified by hkmix <jack@zzh.ca>
 " URL:      http://ethanschoonover.com/solarized
 "           (see this url for latest release & screenshots)
 " License:  OSI approved MIT license (see end of this file)
 " Created:  In the middle of the night
-" Modified: 2011 May 05
+" Modified: 2021 June 15
 "
 " Usage "{{{
 "
@@ -536,6 +537,8 @@ endif
 " note that link syntax to avoid duplicate configuration doesn't work with the
 " exe compiled formats
 
+exe "hi! None"           .s:fmt_none   .s:fg_none   .s:bg_none
+
 exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_back
 
 exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
@@ -549,10 +552,12 @@ exe "hi! Constant"       .s:fmt_none   .s:fg_cyan   .s:bg_none
 "        Boolean         a boolean constant: TRUE, false
 "        Float           a floating point constant: 2.3e10
 
-exe "hi! Identifier"     .s:fmt_none   .s:fg_blue   .s:bg_none
+exe "hi! Identifier"     .s:fmt_none   .s:fg_base0   .s:bg_none
 "       *Identifier      any variable name
 "        Function        function name (also: methods for classes)
 "
+exe "hi! Highlighted"    .s:fmt_none   .s:fg_blue    .s:bg_none
+
 exe "hi! Statement"      .s:fmt_none   .s:fg_green  .s:bg_none
 "       *Statement       any statement
 "        Conditional     if, then, else, endif, switch, etc.
@@ -588,6 +593,9 @@ exe "hi! Underlined"     .s:fmt_none   .s:fg_violet .s:bg_none
 
 exe "hi! Ignore"         .s:fmt_none   .s:fg_none   .s:bg_none
 "       *Ignore          left blank, hidden  |hl-Ignore|
+
+exe "hi! Escape"         .s:fmt_bold   .s:fg_red    .s:bg_none
+"       *Escape          escape sequences
 
 exe "hi! Error"          .s:fmt_bold   .s:fg_red    .s:bg_none
 "       *Error           any erroneous construct
@@ -654,7 +662,7 @@ exe "hi! DiffDelete"     .s:fmt_none   .s:fg_red    .s:bg_base02
 exe "hi! DiffText"       .s:fmt_none   .s:fg_blue   .s:bg_base02 .s:sp_blue
     endif
 endif
-exe "hi! SignColumn"     .s:fmt_none   .s:fg_base0
+exe "hi! SignColumn"     .s:fmt_none   .s:fg_base0  .s:bg_base02
 exe "hi! Conceal"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! SpellBad"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_red
 exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_violet
@@ -705,7 +713,8 @@ exe "hi! vimGroup"          .s:fmt_undb    .s:fg_blue   .s:bg_none
 " diff highlighting "{{{
 " ---------------------------------------------------------------------
 hi! link diffAdded Statement
-hi! link diffLine Identifier
+hi! link diffLine Highlighted
+hi! link diffSubName diffLine
 "}}}
 " git & gitcommit highlighting "{{{
 "git
@@ -757,22 +766,124 @@ hi! link gitcommitUnmergedArrow  gitcommitUnmergedFile
 "exe "hi! gitcommitOverflow"
 "exe "hi! gitcommitBlank"
 " }}}
-" html highlighting "{{{
+" html/xml highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! htmlTag"           .s:fmt_none .s:fg_base01 .s:bg_none
-exe "hi! htmlEndTag"        .s:fmt_none .s:fg_base01 .s:bg_none
-exe "hi! htmlTagN"          .s:fmt_bold .s:fg_base1  .s:bg_none
-exe "hi! htmlTagName"       .s:fmt_bold .s:fg_blue   .s:bg_none
-exe "hi! htmlSpecialTagName".s:fmt_ital .s:fg_blue   .s:bg_none
-exe "hi! htmlArg"           .s:fmt_none .s:fg_base00 .s:bg_none
-exe "hi! javaScript"        .s:fmt_none .s:fg_yellow .s:bg_none
+hi! link htmlArg Normal
+hi! link htmlHead Normal
+hi! link htmlTitle Normal
+hi! link htmlH2 htmlTitle
+hi! link htmlH3 htmlTitle
+hi! link htmlH4 htmlTitle
+hi! link htmlH5 htmlTitle
+hi! link htmlH6 htmlTitle
+hi! link htmlH7 htmlTitle
+hi! link htmlTagN Highlighted
+hi! link htmlTagName Highlighted
+hi! link htmlTag htmlTagN
+hi! link htmlEndTag htmlTagN
+hi! link htmlSpecialTagName Highlighted
+hi! link xmlAttrib Normal
+hi! link xmlTag Highlighted
+hi! link xmlEndTag Highlighted
+hi! link xmlTagN Normal
+hi! link xmlTagName Highlighted
+hi! link xmlProcessingDelim Highlighted
+"}}}
+" css highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link cssPageMarginProp cssCommonAttr
+hi! link cssTagName Keyword
+hi! link cssIdentifier Identifier
+hi! link cssAttrRegion Keyword
+hi! link cssClassName cssIdentifier
+hi! link cssClassNameDot cssClassName
+hi! link cssPseudoClassId cssCommonAttr
+hi! link cssPagePseudo cssCommonAttr
+hi! link cssNoise Normal
+hi! link cssAttrComma Normal
+hi! link cssProp Normal
+hi! link cssContentForPagedMediaProp Normal
+hi! link cssLineboxProp Normal
+hi! link cssMarqueeProp Normal
+hi! link cssPagedMediaProp Normal
+hi! link cssPrintProp Normal
+hi! link cssRubyProp Normal
+hi! link cssSpeechProp Normal
+hi! link cssRenderProp Normal
+hi! link cssAnimationProp Normal
+hi! link cssBackgroundProp Normal
+hi! link cssBorderProp Normal
+hi! link cssBoxProp Normal
+hi! link cssCascadeProp Normal
+hi! link cssColorProp Normal
+hi! link cssDimensionProp Normal
+hi! link cssFlexibleBoxProp Normal
+hi! link cssFontProp Normal
+hi! link cssMultiColumnProp Normal
+hi! link cssInteractProp Normal
+hi! link cssGeneratedContentProp Normal
+hi! link cssGridProp Normal
+hi! link cssHyerlinkProp Normal
+hi! link cssListProp Normal
+hi! link cssPositioningProp Normal
+hi! link cssTableProp Normal
+hi! link cssTextProp Normal
+hi! link cssTransformProp Normal
+hi! link cssTransitionProp Normal
+hi! link cssUIProp Normal
+hi! link cssIEUIProp Normal
+hi! link cssAuralProp Normal
+hi! link cssMobileTextProp Normal
+hi! link cssMediaProp Normal
+hi! link cssPageProp Normal
+hi! link cssFontDescriptorProp Normal
+"}}}
+" yaml highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link yamlKeyValueDelimiter Normal
+hi! link yamlBlockCollectionItemStart Normal
+hi! link yamlPlainScalar Constant
+"}}}
+" cpp highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link cppOperator Normal
+"}}}
+" cs highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link csClassType Normal
+hi! link csLogicSymbols Normal
+hi! link csTypeOfStatement Normal
+hi! link csIsType Normal
+hi! link csOpSymbols Normal
+hi! link csXmlTag xmlTag
+"}}}
+" rs highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link rustEnum Identifier
+hi! link rustEnumVariant Identifier
+hi! link rustTrait Identifier
+hi! link rustLifetime StorageClass
+hi! link rustDeriveTrait rustDerive
+hi! link rustModPath Normal
+hi! link rustModPathSep rustModPath
+hi! link rustQuestionMark Keyword
+hi! link rustOperator Normal
+hi! link rustSelf Identifier
+hi! link rustMacroVariable Identifier
+hi! link rustInvalidBareKeyword Keyword
+hi! link rustCommentLineDoc Comment
+"}}}
+" toml highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link tomlTable PreProc
+hi! link tomlTableArray tomlTable
 "}}}
 " perl highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! perlHereDoc"    . s:fg_base1  .s:bg_back   .s:fmt_none
-exe "hi! perlVarPlain"   . s:fg_yellow .s:bg_back   .s:fmt_none
-exe "hi! perlStatementFileDesc". s:fg_cyan.s:bg_back.s:fmt_none
-
+exe "hi! perlHereDoc"           .s:fg_base1  .s:bg_back   .s:fmt_none
+hi! link perlFiledescRead Type
+hi! link perlVarPlain Identifier
+exe "hi! perlStatementFileDesc" .s:fg_cyan   .s:bg_back   .s:fmt_none
 "}}}
 " tex highlighting "{{{
 " ---------------------------------------------------------------------
@@ -805,6 +916,133 @@ exe "hi! rubyDefine"     . s:fg_base1  .s:bg_back   .s:fmt_bold
 "hi! link rubyGlobalVariable    Identifier
 "hi! link rubyClassVariable     Identifier
 "hi! link rubyConstant          Type
+"}}}
+" sh highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link shWrapLineOperator Escape
+hi! link shOption PreProc
+"}}}
+" netrw highlighting "{{{
+" ---------------------------------------------------------------------
+exe "hi! netrwDir"     .s:fmt_none   .s:fg_blue   .s:bg_none
+exe "hi! netrwExe"     .s:fmt_none   .s:fg_green  .s:bg_none
+exe "hi! netrwSymlink" .s:fmt_none   .s:fg_cyan   .s:bg_none
+"}}}
+" fugitive highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link fugitiveSymbolicRef Highlighted
+"}}}
+" json highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link jsonFold Normal
+hi! link jsonBraces Normal
+hi! link jsonCommentError Comment
+hi! link jsonKeyword Constant
+hi! link jsonQuote Constant
+"}}}
+" cmake highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link cmakeArguments Normal
+hi! link cmakeCommand Keyword
+hi! link cmakeGeneratorExpressions Keyword
+hi! link cmakeProperty Normal
+hi! link cmakeVariable Keyword
+hi! link cmakeVariableValue Highlighted
+hi! link cmakeKWadd_compile_options Normal
+hi! link cmakeKWadd_custom_command Normal
+hi! link cmakeKWadd_custom_target Normal
+hi! link cmakeKWadd_definitions Normal
+hi! link cmakeKWadd_dependencies Normal
+hi! link cmakeKWadd_executable Normal
+hi! link cmakeKWadd_library Normal
+hi! link cmakeKWadd_subdirectory Normal
+hi! link cmakeKWadd_test Normal
+hi! link cmakeKWaux_source_directory Normal
+hi! link cmakeKWbreak Normal
+hi! link cmakeKWbuild_command Normal
+hi! link cmakeKWcmake_host_system_information Normal
+hi! link cmakeKWcmake_minimum_required Normal
+hi! link cmakeKWcmake_policy Normal
+hi! link cmakeKWconfigure_file Normal
+hi! link cmakeKWcreate_test_sourcelist Normal
+hi! link cmakeKWctest_coverage Normal
+hi! link cmakeKWdefine_property Normal
+hi! link cmakeKWelse Normal
+hi! link cmakeKWelseif Normal
+hi! link cmakeKWenable_language Normal
+hi! link cmakeKWenable_testing Normal
+hi! link cmakeKWendforeach Normal
+hi! link cmakeKWendfunction Normal
+hi! link cmakeKWendif Normal
+hi! link cmakeKWendmacro Normal
+hi! link cmakeKWendwhile Normal
+hi! link cmakeKWexecute_process Normal
+hi! link cmakeKWexport Normal
+hi! link cmakeKWfile Normal
+hi! link cmakeKWfind_file Normal
+hi! link cmakeKWfind_library Normal
+hi! link cmakeKWfind_package Normal
+hi! link cmakeKWfind_path Normal
+hi! link cmakeKWfind_program Normal
+hi! link cmakeKWfltk_wrap_ui Normal
+hi! link cmakeKWforeach Normal
+hi! link cmakeKWfunction Normal
+hi! link cmakeKWget_cmake_property Normal
+hi! link cmakeKWget_directory_property Normal
+hi! link cmakeKWget_filename_component Normal
+hi! link cmakeKWget_property Normal
+hi! link cmakeKWget_source_file_property Normal
+hi! link cmakeKWget_target_property Normal
+hi! link cmakeKWget_test_property Normal
+hi! link cmakeKWif Normal
+hi! link cmakeKWinclude Normal
+hi! link cmakeKWinclude_directories Normal
+hi! link cmakeKWinclude_external_msproject Normal
+hi! link cmakeKWinclude_regular_expression Normal
+hi! link cmakeKWinstall Normal
+hi! link cmakeKWlink_directories Normal
+hi! link cmakeKWlist Normal
+hi! link cmakeKWload_cache Normal
+hi! link cmakeKWload_command Normal
+hi! link cmakeKWmacro Normal
+hi! link cmakeKWmake_directory Normal
+hi! link cmakeKWmark_as_advanced Normal
+hi! link cmakeKWmath Normal
+hi! link cmakeKWmessage Normal
+hi! link cmakeKWoption Normal
+hi! link cmakeKWproject Normal
+hi! link cmakeKWqt_wrap_cpp Normal
+hi! link cmakeKWqt_wrap_ui Normal
+hi! link cmakeKWremove_definitions Normal
+hi! link cmakeKWreturn Normal
+hi! link cmakeKWseparate_arguments Normal
+hi! link cmakeKWset Normal
+hi! link cmakeKWset_directory_properties Normal
+hi! link cmakeKWset_property Normal
+hi! link cmakeKWset_source_files_properties Normal
+hi! link cmakeKWset_target_properties Normal
+hi! link cmakeKWset_tests_properties Normal
+hi! link cmakeKWsite_name Normal
+hi! link cmakeKWsource_group Normal
+hi! link cmakeKWstring Normal
+hi! link cmakeKWtarget_compile_definitions Normal
+hi! link cmakeKWtarget_compile_options Normal
+hi! link cmakeKWtarget_include_directories Normal
+hi! link cmakeKWtarget_link_libraries Normal
+hi! link cmakeKWtry_compile Normal
+hi! link cmakeKWtry_run Normal
+hi! link cmakeKWunset Normal
+hi! link cmakeKWvariable_watch Normal
+hi! link cmakeKWwhile Normal
+hi! link cmakeKWwrite_file Normal
+"}}}
+" python highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link pythonExceptions Normal
+hi! link pythonDecoratorName pythonDecorator
+hi! link pythonBuiltin Type
+hi! link pythonDoctest PreProc
+hi! link pythonDoctestValue PreProc
 "}}}
 " haskell syntax highlighting"{{{
 " ---------------------------------------------------------------------
