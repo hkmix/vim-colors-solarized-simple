@@ -32,6 +32,7 @@ added, `^` indicates possibly buggy, complicated rules):
 - Rust
 - TOML
 - YAML
+- cfg
 - dosbatch\*
 - dosini
 - go

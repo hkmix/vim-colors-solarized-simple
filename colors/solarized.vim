@@ -882,6 +882,11 @@ hi! link rustCommentLineDoc Comment
 hi! link tomlTable PreProc
 hi! link tomlTableArray tomlTable
 "}}}
+" cfg highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link CfgSection PreProc
+hi! link CfgOnOff Constant
+"}}}
 " perl highlighting "{{{
 " ---------------------------------------------------------------------
 exe "hi! perlHereDoc"           .s:fg_base1  .s:bg_back   .s:fmt_none
