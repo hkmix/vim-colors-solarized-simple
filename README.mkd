@@ -18,6 +18,7 @@ of colours used and attempts to improve consistency between languages.
 
 Current list of tweaked languages/tools:
     - C++
+    - C#
     - Python
     - Rust
     - vimscript
@@ -28,6 +29,16 @@ Current list of tweaked languages/tools:
     - CMake
     - dosini
     - netrw
+
+WIP:
+    - PHP
+    - JavaScript
+
+Next:
+    - Markdown
+    - dosbatch
+    - go
+    - dart
 
 Visit the [Solarized homepage]
 ------------------------------

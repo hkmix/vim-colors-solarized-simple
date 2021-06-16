@@ -926,6 +926,10 @@ exe "hi! rubyDefine"     . s:fg_base1  .s:bg_back   .s:fmt_bold
 " ---------------------------------------------------------------------
 hi! link shWrapLineOperator Escape
 hi! link shOption PreProc
+hi! link shCommandSub None
+hi! link shOperator Normal
+hi! link shTestOpr shOperator
+hi! link shQuote Constant
 "}}}
 " netrw highlighting "{{{
 " ---------------------------------------------------------------------
@@ -1040,6 +1044,24 @@ hi! link cmakeKWunset Normal
 hi! link cmakeKWvariable_watch Normal
 hi! link cmakeKWwhile Normal
 hi! link cmakeKWwrite_file Normal
+"}}}
+" php highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link phpVarSelector Normal
+hi! link phpParent Normal
+hi! link phpMemberSelector Normal
+hi! link phpOperator Normal
+hi! link phpDefine Keyword
+hi! link phpStructure Keyword
+hi! link phpDocTags Highlighted
+hi! link phpRelation phpOperator
+hi! link phpComparison phpOperator
+"}}}
+" javascript highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link javaScriptIdentifier Keyword
+hi! link javaScriptFunction Keyword
+hi! link javaScriptNumber Constant
 "}}}
 " python highlighting "{{{
 " ---------------------------------------------------------------------
