@@ -26,8 +26,8 @@ Current list of tweaked languages/tools:
     - YAML
     - TOML
     - CMake
+    - dosini
     - netrw
-
 
 Visit the [Solarized homepage]
 ------------------------------

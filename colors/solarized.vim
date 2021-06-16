@@ -1049,6 +1049,11 @@ hi! link pythonBuiltin Type
 hi! link pythonDoctest PreProc
 hi! link pythonDoctestValue PreProc
 "}}}
+" dosini highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link dosiniLabel Normal
+hi! link dosiniHeader PreProc
+"}}}
 " haskell syntax highlighting"{{{
 " ---------------------------------------------------------------------
 " For use with syntax/haskell.vim : Haskell Syntax File
