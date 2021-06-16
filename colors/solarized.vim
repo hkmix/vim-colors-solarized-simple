@@ -1060,8 +1060,11 @@ hi! link phpComparison phpOperator
 " javascript highlighting "{{{
 " ---------------------------------------------------------------------
 hi! link javaScriptIdentifier Keyword
+hi! link javaScriptKeyword Keyword
 hi! link javaScriptFunction Keyword
 hi! link javaScriptNumber Constant
+hi! link javaScriptReserved Type
+hi! link javaScriptNull Constant
 "}}}
 " python highlighting "{{{
 " ---------------------------------------------------------------------
