@@ -1081,6 +1081,20 @@ hi! link pythonDoctestValue PreProc
 hi! link dosiniLabel Normal
 hi! link dosiniHeader PreProc
 "}}}
+" dosbatch highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link dosbatchArgument PreProc
+hi! link dosbatchImplicit Keyword
+hi! link dosbatchAt Keyword
+hi! link dosbatchVariable PreProc
+hi! link dosbatchSwitch PreProc
+hi! link dosbatchOperator Normal
+hi! link dosbatchLabel Normal
+"}}}
+" go highlighting "{{{
+" ---------------------------------------------------------------------
+hi! link goConstants Constant
+"}}}
 " markdown highlighting "{{{
 " ---------------------------------------------------------------------
 exe "hi! markdownUrl"        .s:fmt_undr   .s:fg_blue   .s:bg_none

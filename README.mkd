@@ -32,12 +32,12 @@ added):
 - netrw
 - PHP
 - JavaScript*
-
-Next:
-
 - Markdown
 - dosbatch
 - go
+
+Next:
+
 - dart
 
 Visit the [Solarized homepage]
