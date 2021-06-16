@@ -8,18 +8,19 @@ Modified: 2011 Apr 16
 
 ---
 
-Solarized Simple Colorscheme for Vim
-====================================
+# Solarized Simple Colorscheme for Vim
 
-Developed by Ethan Schoonover <es@ethanschoonover.com>
+Developed by Ethan Schoonover <es@ethanschoonover.com>, modified by @hkmix.
 
 Solarized Simple is a drop-in replacement for Solarized. It reduces the numbers
 of colours used and attempts to improve consistency between languages.
 
-Current list of tweaked languages/tools:
+Current list of tweaked languages/tools (`*` indicates additional syntax rules
+added):
+
     - C++
     - C#
-    - Python
+    - Python*
     - Rust
     - vimscript
     - HTML/XML
@@ -29,12 +30,11 @@ Current list of tweaked languages/tools:
     - CMake
     - dosini
     - netrw
-
-WIP:
     - PHP
-    - JavaScript
+    - JavaScript*
 
 Next:
+
     - Markdown
     - dosbatch
     - go

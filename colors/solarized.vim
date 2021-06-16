@@ -781,7 +781,6 @@ hi! link htmlH3 htmlTitle
 hi! link htmlH4 htmlTitle
 hi! link htmlH5 htmlTitle
 hi! link htmlH6 htmlTitle
-hi! link htmlH7 htmlTitle
 hi! link htmlTagN Highlighted
 hi! link htmlTagName Highlighted
 hi! link htmlTag htmlTagN
@@ -1080,6 +1079,30 @@ hi! link pythonDoctestValue PreProc
 " ---------------------------------------------------------------------
 hi! link dosiniLabel Normal
 hi! link dosiniHeader PreProc
+"}}}
+" markdown highlighting "{{{
+" ---------------------------------------------------------------------
+exe "hi! markdownUrl"        .s:fmt_undr   .s:fg_blue   .s:bg_none
+exe "hi! markdownItalic"     .s:fmt_ital   .s:fg_none   .s:bg_none
+exe "hi! markdownBold"       .s:fmt_bold   .s:fg_none   .s:bg_none
+exe "hi! markdownBoldItalic" .s:fmt_bldi   .s:fg_none   .s:bg_none
+hi! link markdownAutomaticLink markdownUrl
+hi! link markdownUrlDelimiter markdownAutomaticLink
+hi! link markdownH2 markdownH1
+hi! link markdownH3 markdownH1
+hi! link markdownH4 markdownH1
+hi! link markdownH5 markdownH1
+hi! link markdownH6 markdownH1
+hi! link markdownH2Delimiter markdownH2
+hi! link markdownH3Delimiter markdownH3
+hi! link markdownH4Delimiter markdownH4
+hi! link markdownH5Delimiter markdownH5
+hi! link markdownH6Delimiter markdownH6
+hi! link markdownLinkText Normal
+hi! link markdownIdDeclaration Normal
+hi! link markdownCode Comment
+hi! link markdownCodeDelimiter markdownCode
+hi! link markdownCodeBlock markdownCode
 "}}}
 " haskell syntax highlighting"{{{
 " ---------------------------------------------------------------------
