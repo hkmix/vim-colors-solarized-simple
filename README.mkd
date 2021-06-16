@@ -20,7 +20,7 @@ added):
 
 - C++
 - C#
-- Python*
+- Python\*
 - Rust
 - vimscript
 - HTML/XML
@@ -31,9 +31,9 @@ added):
 - dosini
 - netrw
 - PHP
-- JavaScript*
+- JavaScript\*
 - Markdown
-- dosbatch
+- dosbatch\*
 - go
 
 Next:
