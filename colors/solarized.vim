@@ -708,7 +708,7 @@ hi! link vimGroupName Identifier
 hi! link vimSynType Type
 hi! link vimHiGroup Normal
 hi! link vimMapModKey Escape
-exe "hi! helpExample"       .s:fmt_none    .s:fg_base1  .s:bg_none
+exe "hi! helpExample"       .s:fmt_none    .s:fg_base01 .s:bg_none
 exe "hi! helpOption"        .s:fmt_none    .s:fg_cyan   .s:bg_none
 exe "hi! helpNote"          .s:fmt_none    .s:fg_magenta.s:bg_none
 exe "hi! helpVim"           .s:fmt_none    .s:fg_magenta.s:bg_none
