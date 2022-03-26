@@ -863,6 +863,7 @@ hi! link csXmlTag xmlTag
 "}}}
 " rs highlighting "{{{
 " ---------------------------------------------------------------------
+hi! link rustAs Keyword
 hi! link rustEnum Identifier
 hi! link rustEnumVariant Identifier
 hi! link rustTrait Identifier
