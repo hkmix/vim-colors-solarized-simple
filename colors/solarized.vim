@@ -1513,7 +1513,8 @@ hi! link @variable.bash     PreProc
 hi! link @punctuation.special.bash Preproc
 
 " C++.
-hi! link @conditional.ternary NONE
+hi! link @conditional.ternary.cpp NONE
+hi! link @variable.builtin.cpp Keyword
 
 " Python.
 hi! link @punctuation.bracket.python Identifier
