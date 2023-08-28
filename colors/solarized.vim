@@ -1460,6 +1460,7 @@ hi! link @character         Character
 hi! link @character.special SpecialChar
 hi! link @comment           Comment
 hi! link @conditional       Conditional
+hi! link @conditional.ternary NONE
 hi! link @constant          NONE
 hi! link @constant.builtin  NONE
 hi! link @constant.macro    Define
@@ -1513,12 +1514,16 @@ hi! link @variable.bash     PreProc
 hi! link @punctuation.special.bash Preproc
 
 " C++.
-hi! link @conditional.ternary.cpp NONE
 hi! link @variable.builtin.cpp Keyword
 
 " Python.
 hi! link @punctuation.bracket.python Identifier
 hi! link @punctuation.special.python Identifier
+
+" Vim.
+hi! link @constant.builtin.vim Special
+hi! link @function.macro.vim NONE
+hi! link @punctuation.special.vim Keyword
 
 " Context.
 exe "hi! TreesitterContext"  .s:fg_none   .s:bg_base02   .s:fmt_none
