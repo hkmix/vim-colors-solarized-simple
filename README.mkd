@@ -18,6 +18,7 @@ of colours used and attempts to improve consistency between languages.
 Current list of tweaked languages/tools (`*` indicates additional syntax rules
 added, `^` indicates possibly buggy, complicated rules):
 
+- nvim-treesitter (WIP)
 - C#
 - C/C++
 - CMake

@@ -1454,6 +1454,74 @@ exe "hi! pandocMetadata"                 .s:fg_blue   .s:bg_none   .s:fmt_bold
 hi! link pandocMetadataTitle             pandocMetadata
 
 "}}}
+" nvim-treesitter highlighting "{{{
+hi! link @boolean           Boolean
+hi! link @character         Character
+hi! link @character.special SpecialChar
+hi! link @comment           Comment
+hi! link @conditional       Conditional
+hi! link @constant          NONE
+hi! link @constant.builtin  NONE
+hi! link @constant.macro    Define
+hi! link @constructor       NONE
+hi! link @debug             Debug
+hi! link @define            Define
+hi! link @exception         Exception
+hi! link @field             Identifier
+hi! link @float             Float
+hi! link @function          NONE
+hi! link @function.builtin  NONE
+hi! link @function.macro    PreProc
+hi! link @include           Include
+hi! link @keyword           Keyword
+hi! link @label             Label
+hi! link @macro             Macro
+hi! link @method            Function
+hi! link @namespace         NONE
+hi! link @number            Number
+hi! link @operator          NONE
+hi! link @parameter         Identifier
+hi! link @preproc           PreProc
+hi! link @property          Identifier
+hi! link @punctuation       NONE
+hi! link @punctuation.bracket NONE
+hi! link @punctuation.special PreProc
+hi! link @repeat            Repeat
+hi! link @storageclass      StorageClass
+hi! link @string            String
+hi! link @string.escape     SpecialChar
+hi! link @string.special    SpecialChar
+hi! link @structure         Structure
+hi! link @tag               Tag
+hi! link @text.literal      Comment
+hi! link @text.reference    Identifier
+hi! link @text.title        Title
+hi! link @text.todo         Todo
+hi! link @text.underline    Underlined
+hi! link @text.uri          Underlined
+hi! link @type              NONE
+hi! link @type.builtin      Type
+hi! link @type.definition   Typedef
+hi! link @type.qualifier    Type
+hi! link @variable          NONE
+
+" Bash.
+hi! link @constant.bash     PreProc
+hi! link @function.builtin.bash Keyword
+hi! link @preproc.bash      Comment
+hi! link @variable.bash     PreProc
+hi! link @punctuation.special.bash Preproc
+
+" C++.
+hi! link @conditional.ternary NONE
+
+" Python.
+hi! link @punctuation.bracket.python Identifier
+hi! link @punctuation.special.python Identifier
+
+" Context.
+exe "hi! TreesitterContext"  .s:fg_none   .s:bg_base02   .s:fmt_none
+"}}}
 " Utility autocommand "{{{
 " ---------------------------------------------------------------------
 " In cases where Solarized is initialized inside a terminal vim session and 
