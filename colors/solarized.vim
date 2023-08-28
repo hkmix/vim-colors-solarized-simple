@@ -1520,6 +1520,10 @@ hi! link @variable.builtin.cpp Keyword
 hi! link @punctuation.bracket.python Identifier
 hi! link @punctuation.special.python Identifier
 
+" TOML.
+hi! link @punctuation.bracket.toml PreProc
+hi! link @type.toml         PreProc
+
 " Vim.
 hi! link @constant.builtin.vim Special
 hi! link @function.macro.vim NONE
