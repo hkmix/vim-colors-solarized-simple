@@ -135,6 +135,9 @@
 " Allow or disallow certain features based on current terminal emulator or 
 " environment.
 
+" Neovim 0.10 sets termguicolors by default.
+let s:gui_colors = has("gui_running") || has("nvim")
+
 " Terminals that support italics
 let s:terms_italic=[
             \"rxvt",
@@ -146,7 +149,7 @@ let s:terms_noitalic=[
             \"iTerm.app",
             \"Apple_Terminal"
             \]
-if has("gui_running")
+if s:gui_colors
     let s:terminal_italic=1 " TODO: could refactor to not require this at all
 else
     let s:terminal_italic=0 " terminals will be guilty until proven compatible
@@ -241,7 +244,7 @@ let colors_name = "solarized"
 " leave the hex values out entirely in that case and include only cterm colors)
 " We also check to see if user has set solarized (force use of the
 " neutral gray monotone palette component)
-if (has("gui_running") && g:solarized_degrade == 0)
+if (s:gui_colors && g:solarized_degrade == 0)
     let s:vmode       = "gui"
     let s:base03      = "#002b36"
     let s:base02      = "#073642"
@@ -260,7 +263,7 @@ if (has("gui_running") && g:solarized_degrade == 0)
     let s:cyan        = "#2aa198"
     "let s:green       = "#859900" "original
     let s:green       = "#719e07" "experimental
-elseif (has("gui_running") && g:solarized_degrade == 1)
+elseif (s:gui_colors && g:solarized_degrade == 1)
     " These colors are identical to the 256 color mode. They may be viewed
     " while in gui mode via "let g:solarized_degrade=1", though this is not
     " recommened and is for testing only.
@@ -358,7 +361,6 @@ endif
 " Formatting options and null values for passthrough effect "{{{
 " ---------------------------------------------------------------------
     let s:none            = "NONE"
-    let s:none            = "NONE"
     let s:t_none          = "NONE"
     let s:n               = "NONE"
     let s:c               = ",undercurl"
@@ -369,7 +371,7 @@ endif
 "}}}
 " Background value based on termtrans setting "{{{
 " ---------------------------------------------------------------------
-if (has("gui_running") || g:solarized_termtrans == 0)
+if (s:gui_colors || g:solarized_termtrans == 0)
     let s:back        = s:base03
 else
     let s:back        = "NONE"
@@ -491,7 +493,7 @@ exe "let s:fmt_revb     = ' ".s:vmode."=NONE".s:r.s:b.  " term=NONE".s:r.s:b."'"
 exe "let s:fmt_revbb    = ' ".s:vmode."=NONE".s:r.s:bb.   " term=NONE".s:r.s:bb."'"
 exe "let s:fmt_revbbu   = ' ".s:vmode."=NONE".s:r.s:bb.s:u." term=NONE".s:r.s:bb.s:u."'"
 
-if has("gui_running")
+if s:gui_colors
     exe "let s:sp_none      = ' guisp=".s:none   ."'"
     exe "let s:sp_back      = ' guisp=".s:back   ."'"
     exe "let s:sp_base03    = ' guisp=".s:base03 ."'"
@@ -539,7 +541,7 @@ endif
 
 exe "hi! None"           .s:fmt_none   .s:fg_none   .s:bg_none
 
-exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_back
+exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_none
 
 exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
 "       *Comment         any comment
@@ -605,6 +607,12 @@ exe "hi! Todo"           .s:fmt_bold   .s:fg_magenta.s:bg_none
 "                        keywords TODO FIXME and XXX
 "
 "}}}
+" Neovim 0.10 fixes "{{{
+" Neovim 0.10 stops settings some of the default settings, restore them.
+if has("nvim")
+    hi! link String     Constant
+endif
+"}}}
 " Extended highlighting "{{{
 " ---------------------------------------------------------------------
 if      (g:solarized_visibility=="high")
@@ -628,7 +636,7 @@ exe "hi! MoreMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! ModeMsg"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! LineNr"         .s:fmt_none   .s:fg_base01 .s:bg_base02
 exe "hi! Question"       .s:fmt_bold   .s:fg_cyan   .s:bg_none
-if ( has("gui_running") || &t_Co > 8 )
+if (s:gui_colors || &t_Co > 8 )
     exe "hi! VertSplit"  .s:fmt_none   .s:fg_base00 .s:bg_base00
 else
     exe "hi! VertSplit"  .s:fmt_revbb  .s:fg_base00 .s:bg_base02
@@ -650,7 +658,7 @@ exe "hi! DiffChange"     .s:fmt_undr   .s:fg_yellow .s:bg_none   .s:sp_yellow
 exe "hi! DiffDelete"     .s:fmt_bold   .s:fg_red    .s:bg_none
 exe "hi! DiffText"       .s:fmt_undr   .s:fg_blue   .s:bg_none   .s:sp_blue
 else " normal
-    if has("gui_running")
+    if s:gui_colors
 exe "hi! DiffAdd"        .s:fmt_bold   .s:fg_green  .s:bg_base02 .s:sp_green
 exe "hi! DiffChange"     .s:fmt_bold   .s:fg_yellow .s:bg_base02 .s:sp_yellow
 exe "hi! DiffDelete"     .s:fmt_bold   .s:fg_red    .s:bg_base02
@@ -668,10 +676,10 @@ exe "hi! SpellBad"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_red
 exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_violet
 exe "hi! SpellRare"      .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_cyan
 exe "hi! SpellLocal"     .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_yellow
-exe "hi! Pmenu"          .s:fmt_none   .s:fg_base0  .s:bg_base02  .s:fmt_revbb
-exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base01 .s:bg_base2   .s:fmt_revbb
-exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base2  .s:bg_base0   .s:fmt_revbb
-exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03  .s:fmt_revbb
+exe "hi! Pmenu"          .s:fmt_none   .s:fg_base0  .s:bg_base02
+exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base01 .s:bg_base2
+exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base2  .s:bg_base0
+exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03
 exe "hi! TabLine"        .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineFill"    .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
 exe "hi! TabLineSel"     .s:fmt_undr   .s:fg_base01 .s:bg_base2   .s:sp_base0  .s:fmt_revbbu
@@ -682,6 +690,8 @@ exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
 
+" Nvim window.
+exe "hi! NormalFloat"    .s:fmt_none   .s:fg_base0  .s:bg_base02
 "}}}
 " vim syntax highlighting "{{{
 " ---------------------------------------------------------------------
@@ -717,9 +727,10 @@ exe "hi! helpHyperTextEntry".s:fmt_none    .s:fg_green  .s:bg_none
 "}}}
 " diff highlighting "{{{
 " ---------------------------------------------------------------------
-hi! link diffAdded Statement
-hi! link diffLine Highlighted
-hi! link diffSubName diffLine
+hi! link diffAdded      DiffAdd
+hi! link diffRemoved    DiffDelete
+hi! link diffLine       Highlighted
+hi! link diffSubName    diffLine
 "}}}
 " git & gitcommit highlighting "{{{
 "git
@@ -1461,18 +1472,18 @@ if has("nvim")
     hi! link @character.special SpecialChar
     hi! link @comment           Comment
     hi! link @conditional       Conditional
-    hi! link @conditional.ternary NONE
-    hi! link @constant          NONE
-    hi! link @constant.builtin  NONE
+    hi! link @conditional.ternary Normal
+    hi! link @constant          Normal
+    hi! link @constant.builtin  Normal
     hi! link @constant.macro    Define
-    hi! link @constructor       NONE
+    hi! link @constructor       Normal
     hi! link @debug             Debug
     hi! link @define            Define
     hi! link @exception         Exception
     hi! link @field             Identifier
     hi! link @float             Float
-    hi! link @function          NONE
-    hi! link @function.builtin  NONE
+    hi! link @function          Normal
+    hi! link @function.builtin  Normal
     hi! link @function.macro    PreProc
     hi! link @include           Include
     hi! link @keyword           Keyword
@@ -1501,11 +1512,11 @@ if has("nvim")
     hi! link @text.todo         Todo
     hi! link @text.underline    Underlined
     hi! link @text.uri          Underlined
-    hi! link @type              NONE
+    hi! link @type              Normal
     hi! link @type.builtin      Type
     hi! link @type.definition   Typedef
     hi! link @type.qualifier    Type
-    hi! link @variable          NONE
+    hi! link @variable          Normal
 
     " Bash.
     hi! link @constant.bash     PreProc
@@ -1527,8 +1538,10 @@ if has("nvim")
 
     " Vim.
     hi! link @constant.builtin.vim Special
-    hi! link @function.macro.vim NONE
+    hi! link @function.macro.vim Normal
+    hi! link @module.vim Normal
     hi! link @punctuation.special.vim Keyword
+    hi! link @variable.builtin.vim Type
 endif
 
 " Context.
