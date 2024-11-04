@@ -677,7 +677,7 @@ exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_violet
 exe "hi! SpellRare"      .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_cyan
 exe "hi! SpellLocal"     .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_yellow
 exe "hi! Pmenu"          .s:fmt_none   .s:fg_base0  .s:bg_base02
-exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base01 .s:bg_base2
+exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base1  .s:bg_base03
 exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base2  .s:bg_base0
 exe "hi! PmenuThumb"     .s:fmt_none   .s:fg_base0  .s:bg_base03
 exe "hi! TabLine"        .s:fmt_undr   .s:fg_base0  .s:bg_base02  .s:sp_base0
@@ -690,7 +690,7 @@ exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
 exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
 
-" Nvim window.
+" Nvim window and other utility window highlights.
 exe "hi! NormalFloat"    .s:fmt_none   .s:fg_base0  .s:bg_base02
 "}}}
 " vim syntax highlighting "{{{
@@ -1546,6 +1546,9 @@ endif
 
 " Context.
 exe "hi! TreesitterContext"  .s:fg_none   .s:bg_base02   .s:fmt_none
+"}}}
+" Misc highlighting "{{{
+hi! link CocMenuSel PmenuSel
 "}}}
 " Utility autocommand "{{{
 " ---------------------------------------------------------------------
