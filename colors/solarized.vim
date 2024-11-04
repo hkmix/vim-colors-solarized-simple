@@ -611,6 +611,7 @@ exe "hi! Todo"           .s:fmt_bold   .s:fg_magenta.s:bg_none
 " Neovim 0.10 stops settings some of the default settings, restore them.
 if has("nvim")
     hi! link String     Constant
+    hi! link Operator   Normal
 endif
 "}}}
 " Extended highlighting "{{{
